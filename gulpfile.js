@@ -13,9 +13,12 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'), //map调试
     combiner = require('stream-combiner2'), //监听错误
     watchPath = require('gulp-watch-path'), //实际上我们只需要重新编译被修改的文件
+    headerFooter = require('gulp-header-footer'),
     rev = require('gulp-rev'),             //gulp 自动添加版本号
     revCollector = require('gulp-rev-collector'),
     htmlreplace = require('gulp-html-replace'); //输出的html 替换
+
+
 
 var handleError = function (err) {
     var colors = gutil.colors;
@@ -47,9 +50,57 @@ gulp.task('default', function () {
 gulp.task('photoSwipe:buildJs', function () {
 
     var combined = combiner.obj([
-        gulp.src(PSpaths.js + '/vedor/*.js'),
-        concat('verdor.js'),
+        gulp.src([PSpaths.js + '/vedor/framework-bridge.js',PSpaths.js + '/vedor/core.js',PSpaths.js + '/vedor/gestures.js',PSpaths.js + '/vedor/show-hide-transition.js',PSpaths.js + '/vedor/items-controller.js',PSpaths.js + '/vedor/tap.js',PSpaths.js + '/vedor/desktop-zoom.js',PSpaths.js + '/vedor/history.js']),
+        concat('verdor.js',{newLine: '\/* new js *\/ \n'}),
+        headerFooter({
+            header:'(function (root, factory) {' +
+            'if (typeof define === \'function\' && define.amd) {' +
+            'define(factory);' +
+            '} else if (typeof exports === \'object\') {' +
+            'module.exports = factory();' +
+            '} else {' +
+            'root.PhotoSwipe = factory();' +
+            '}' +
+            '})(this, function () {' +
+            '\'use strict\';' +
+            'var PhotoSwipe = function(template, UiClass, items, options){',
+            footer:'framework.extend(self, publicMethods); };' +
+            'return PhotoSwipe;' +
+            '});',
+            filter: function(file){
+                return true
+            }
+        }),
         gulp.dest(PSpaths.dest)
     ]);
+    combined.on('error', handleError);
+});
+
+gulp.task("test:header",function(){
+    var combined= combiner.obj([
+        gulp.src(PSpaths.js + '/vedor/framework-bridge.js'),
+        headerFooter({
+            header:'(function (root, factory) {' +
+            'if (typeof define === \'function\' && define.amd) {' +
+            'define(factory);' +
+            '} else if (typeof exports === \'object\') {' +
+            'module.exports = factory();' +
+            '} else {' +
+            'root.PhotoSwipe = factory();' +
+            '}' +
+            '})(this, function () {' +
+            '\'use strict\';' +
+            'var PhotoSwipe = function(template, UiClass, items, options){',
+            footer:'framework.extend(self, publicMethods); };' +
+            'return PhotoSwipe;' +
+            '});',
+            filter: function(file){
+                return true
+            }
+        }),
+        gulp.dest(PSpaths.dest)
+
+    ]);
+
     combined.on('error', handleError);
 });
