@@ -16,39 +16,33 @@ var gulp = require('gulp'),
     headerFooter = require('gulp-header-footer'),
     rev = require('gulp-rev'), // gulp 自动添加版本号
     revCollector = require('gulp-rev-collector'),
-    htmlreplace = require('gulp-html-replace'); // 输出的html 替换
-
-
+    htmlreplace = require('gulp-html-replace') // 输出的html 替换
 
 var handleError = function(err) {
-    var colors = gutil.colors;
-    console.log('\n');
-    gutil.log(colors.red('Error!'));
-    gutil.log('fileName: ' + colors.red(err.fileName));
-    gutil.log('lineNumber: ' + colors.red(err.lineNumber));
-    gutil.log('message: ' + err.message);
+    var colors = gutil.colors
+    console.log('\n')
+    gutil.log(colors.red('Error!'))
+    gutil.log('fileName: ' + colors.red(err.fileName))
+    gutil.log('lineNumber: ' + colors.red(err.lineNumber))
+    gutil.log('message: ' + err.message)
     gutil.log('plugin: ' + colors.yellow(err.plugin))
-};
-
+}
 
 // photoSwipe_手机端图片浏览组件(左右划动,缩放)
 var PSpaths = {
     js: './photoSwipe_src/js',
-    sass: './photoSwipe_src/sass',
+    sass: './photoSwipe_src/sass/',
     dest: './photoSwipe_bin/'
-};
+}
 
-
-//默认方法
+// 默认方法
 gulp.task('default', function() {
-    gutil.log('message');
-    gutil.log(gutil.colors.green('message:') + "This is default fn");
-});
+    gutil.log('message')
+    gutil.log(gutil.colors.green('message:') + 'This is default fn')
+})
 
-
-//合并Photo Swipe JS模块
+// 合并Photo Swipe JS模块
 gulp.task('photoSwipe:buildJs', function() {
-
     var combined = combiner.obj([
         gulp.src([PSpaths.js + '/vedor/framework-bridge.js', PSpaths.js + '/vedor/core.js', PSpaths.js + '/vedor/gestures.js', PSpaths.js + '/vedor/show-hide-transition.js', PSpaths.js + '/vedor/items-controller.js', PSpaths.js + '/vedor/tap.js', PSpaths.js + '/vedor/desktop-zoom.js', PSpaths.js + '/vedor/history.js']),
         concat('verdor.js', { newLine: '\/* new js *\/ \n' }),
@@ -73,6 +67,29 @@ gulp.task('photoSwipe:buildJs', function() {
             }
         }),
         gulp.dest(PSpaths.dest)
-    ]);
-    combined.on('error', handleError);
-});
+    ])
+    combined.on('error', handleError)
+})
+
+// 监听 photoSwipe_src 的SASS
+gulp.task('photoSwipe:watchScss', function() {
+    var cssSrc = PSpaths.sass + '/*.scss',
+        cssSrca = './photoSwipe_src/css/' // 源码也输出一份
+
+    gulp.watch(PSpaths.sass + '**/*.scss', function(event) {
+        var paths = watchPath(event, './photoSwipe_src/sass/', './photoSwipe_src/css/')
+
+        gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
+        gutil.log('Dist ' + paths.distPath)
+
+        gulp.src(paths.srcPath)
+        return sass(cssSrc, { style: 'expanded' })
+            .pipe(gulp.dest(cssSrca))
+            .pipe(rename({ suffix: '.min' }))
+            .pipe(cssnano()) // 精简
+            .pipe(gulp.dest(cssSrca))
+            .on('error', function(err) {
+                console.error('Error!', err.message)
+            })
+    })
+})

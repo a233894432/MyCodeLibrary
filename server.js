@@ -1,4 +1,4 @@
-// 测试用
+// 主要用于开发的时候参数
 var port = Number(process.env.PORT || 60081);
 
 var global_count = 0;
@@ -8,14 +8,17 @@ var logger = require('morgan');
 var express = require('express');
 var app = express();
 
+// photoSwipe_bin E:\github\my_code_lib\photoSwipe_bin
+app.use('/photoSwipe_bin', express.static('photoSwipe_bin'));
+// logger 
 app.use(logger());
 
 app.get('/', function(req, res) {
     res.send('API Counting: ' + global_count);
 });
 
-app.get('/*', function(req, res) {
-    var args = parseurl(req).pathname.replace('/', '').split('x');
+app.get('/api/*', function(req, res) {
+    var args = parseurl(req).pathname.replace('/api/', '').split('x');
     var width = args[0];
     var height = args[1];
     var font_size = Math.round(Math.max(12, Math.min(Math.min(args[0], args[1]) * 0.75, 0.75 * Math.max(args[0], args[1]) / 12)))
