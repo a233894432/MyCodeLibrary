@@ -53,7 +53,8 @@ gulp.task('photoSwipe:buildJs', function () {
         gulp.src([PSpaths.js + '/vedor/framework-bridge.js',PSpaths.js + '/vedor/core.js',PSpaths.js + '/vedor/gestures.js',PSpaths.js + '/vedor/show-hide-transition.js',PSpaths.js + '/vedor/items-controller.js',PSpaths.js + '/vedor/tap.js',PSpaths.js + '/vedor/desktop-zoom.js',PSpaths.js + '/vedor/history.js']),
         concat('verdor.js',{newLine: '\/* new js *\/ \n'}),
         headerFooter({
-            header:'(function (root, factory) {' +
+            header:'\/* author: Diogoxiang *\/' +
+            '(function (root, factory) {' +
             'if (typeof define === \'function\' && define.amd) {' +
             'define(factory);' +
             '} else if (typeof exports === \'object\') {' +
@@ -76,31 +77,3 @@ gulp.task('photoSwipe:buildJs', function () {
     combined.on('error', handleError);
 });
 
-gulp.task("test:header",function(){
-    var combined= combiner.obj([
-        gulp.src(PSpaths.js + '/vedor/framework-bridge.js'),
-        headerFooter({
-            header:'(function (root, factory) {' +
-            'if (typeof define === \'function\' && define.amd) {' +
-            'define(factory);' +
-            '} else if (typeof exports === \'object\') {' +
-            'module.exports = factory();' +
-            '} else {' +
-            'root.PhotoSwipe = factory();' +
-            '}' +
-            '})(this, function () {' +
-            '\'use strict\';' +
-            'var PhotoSwipe = function(template, UiClass, items, options){',
-            footer:'framework.extend(self, publicMethods); };' +
-            'return PhotoSwipe;' +
-            '});',
-            filter: function(file){
-                return true
-            }
-        }),
-        gulp.dest(PSpaths.dest)
-
-    ]);
-
-    combined.on('error', handleError);
-});
