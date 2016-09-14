@@ -75,3 +75,4 @@ $RECYCLE.BIN/
 *.lnk
 node_modules
 .idea/
+.vscode/
