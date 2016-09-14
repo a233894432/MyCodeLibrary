@@ -74,8 +74,8 @@ gulp.task('photoSwipe:buildJs', function() {
 // 监听 photoSwipe_src 的SASS
 gulp.task('photoSwipe:watchScss', function() {
     var cssSrc = PSpaths.sass + '/*.scss',
-        cssSrca = './photoSwipe_src/css/' // 源码也输出一份
-
+        cssSrca = './photoSwipe_src/css/', // 源码也输出一份
+        cssdist = './photoSwipe_bin/css/'
     gulp.watch(PSpaths.sass + '**/*.scss', function(event) {
         var paths = watchPath(event, './photoSwipe_src/sass/', './photoSwipe_src/css/')
 
@@ -85,11 +85,28 @@ gulp.task('photoSwipe:watchScss', function() {
         gulp.src(paths.srcPath)
         return sass(cssSrc, { style: 'expanded' })
             .pipe(gulp.dest(cssSrca))
+            .pipe(gulp.dest(cssdist))
             .pipe(rename({ suffix: '.min' }))
             .pipe(cssnano()) // 精简
             .pipe(gulp.dest(cssSrca))
+            .pipe(gulp.dest(cssdist))
             .on('error', function(err) {
                 console.error('Error!', err.message)
             })
     })
 })
+
+// 配置一些复制类型的任务
+gulp.task('photoSwipe:copyFile', function() {
+
+    gulp.watch('./photoSwipe_src/js/psInit.js', function() {
+        gulp.src('./photoSwipe_src/js/psInit.js')
+            .pipe(gulp.dest('./photoSwipe_bin/js'))
+
+        gutil.log(gutil.colors.green("photoSwipe:copyFile  OK"))
+    });
+
+})
+
+// photoSwipe:auto 自动
+gulp.task('photoSwipe:auto', ['photoSwipe:copyFile', 'photoSwipe:watchScss'])
