@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--style -->
 
-    <link href="css/photoswipe.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="" href="css/main.css">
     <link rel="stylesheet" href="css/default-skin/default-skin.css">
+
 
     <!-- Core JS file -->
     <!--<script src="js/photoswipe.min.js"></script>-->
@@ -18,19 +20,57 @@
 </head>
 
 <body>
+    <h2>测试0001:</h2>
 
-    <button id="btn">打开图片..</button>
+    <div class="my-gallery">
+
+        <figure itemprop="associatedMedia">
+            <a href="https://farm3.staticflickr.com/2567/5697107145_a4c2eaa0cd_o.jpg" itemprop="contentUrl" data-size="1024x1024">
+                <img src="https://farm3.staticflickr.com/2567/5697107145_3c27ff3cd1_m.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+            <figcaption itemprop="caption description">图片001</figcaption>
+
+        </figure>
+
+        <figure itemprop="associatedMedia">
+            <a href="https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_b.jpg" itemprop="contentUrl" data-size="964x1024">
+                <img src="https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_m.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+            <figcaption itemprop="caption description">图片002</figcaption>
+        </figure>
+
+        <figure itemprop="associatedMedia">
+            <a href="https://farm7.staticflickr.com/6175/6176698785_7dee72237e_b.jpg" itemprop="contentUrl" data-size="1024x683">
+                <img src="https://farm7.staticflickr.com/6175/6176698785_7dee72237e_m.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+            <figcaption itemprop="caption description">图片003</figcaption>
+        </figure>
+
+        <figure itemprop="associatedMedia">
+            <a href="https://farm6.staticflickr.com/5023/5578283926_822e5e5791_b.jpg" itemprop="contentUrl" data-size="1024x768">
+                <img src="https://farm6.staticflickr.com/5023/5578283926_822e5e5791_m.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+            <figcaption itemprop="caption description">图片004</figcaption>
+        </figure>
+
+
+    </div>
+
+
+
 
     <!-- Root element of PhotoSwipe. Must have class pswp. -->
     <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
         <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
+        It's a separate element, as animating opacity is faster than rgba(). -->
         <div class="pswp__bg"></div>
+
         <!-- Slides wrapper with overflow:hidden. -->
         <div class="pswp__scroll-wrap">
-            <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
+
+            <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+            <!-- don't modify these 3 pswp__item elements, data is added later on. -->
             <div class="pswp__container">
                 <div class="pswp__item"></div>
                 <div class="pswp__item"></div>
@@ -70,10 +110,10 @@
                 </div>
 
                 <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
+        </button>
 
                 <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
+        </button>
 
                 <div class="pswp__caption">
                     <div class="pswp__caption__center"></div>
@@ -85,43 +125,7 @@
 
     </div>
 
-
-
-
-
-
-
-    <script>
-        var openPhotoSwipe = function() {
-            var pswpElement = document.querySelectorAll('.pswp')[0];
-
-            // build items array
-            var items = [{
-                src: '/api/964x1024',
-                w: 964,
-                h: 1024,
-                title: '这是标题0001'
-            }, {
-                src: '/api/1024x683',
-                w: 1024,
-                h: 683,
-                title: '这是标题0002'
-            }];
-
-            // define options (if needed)
-            var options = {
-                // history & focus options are disabled on CodePen
-                index: 0,
-                tapToClose: true
-            };
-
-            var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-            gallery.init();
-        };
-
-        openPhotoSwipe();
-        document.getElementById('btn').onclick = openPhotoSwipe;
-    </script>
+    <script src="js/psInit.js"></script>
 </body>
 
 </html>
