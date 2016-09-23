@@ -401,6 +401,7 @@
         },
         /**
          * 静态修改url
+         * @param 为varables
          */
         replaceParamURL: function(param) {
             var key = param.name,
