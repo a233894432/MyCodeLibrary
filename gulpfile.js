@@ -32,7 +32,7 @@ var handleError = function(err) {
 var PSpaths = {
     js: './photoSwipe_src/js',
     sass: './photoSwipe_src/sass/',
-    dest: './photoSwipe_bin/'
+    dest: './photoSwipe_bin/js/'
 }
 
 // 默认方法
@@ -47,7 +47,7 @@ gulp.task('photoSwipe:buildJs', function() {
         gulp.src([PSpaths.js + '/vedor/framework-bridge.js', PSpaths.js + '/vedor/core.js', PSpaths.js + '/vedor/gestures.js', PSpaths.js + '/vedor/show-hide-transition.js', PSpaths.js + '/vedor/items-controller.js', PSpaths.js + '/vedor/tap.js', PSpaths.js + '/vedor/desktop-zoom.js', PSpaths.js + '/vedor/history.js']),
         concat('verdor.js', { newLine: '\/* new js *\/ \n' }),
         headerFooter({
-            header: '\/* author: Diogoxiang *\/' +
+            header: '\/* author: Diogoxiang *\/ \n' +
                 '(function (root, factory) {' +
                 'if (typeof define === \'function\' && define.amd) {' +
                 'define(factory);' +
@@ -69,7 +69,29 @@ gulp.task('photoSwipe:buildJs', function() {
         gulp.dest(PSpaths.dest)
     ])
     combined.on('error', handleError)
-})
+});
+
+// 合并Photo Swipe UI-JS模块
+gulp.task('photoSwipe:buildUIJs', function() {
+    var combined = combiner.obj([
+        gulp.src([PSpaths.dest+ '/verdor.js', PSpaths.dest+ '/photoswipe-ui-default.js']),
+        concat('photoSwipe-model.js', { newLine: '\/* new js *\/ \n' }),
+        headerFooter({
+            header: '\/* author:diogoxiang *\/ \n',
+            footer: '\/* author:2016年9月27日10:36:02 *\/ \n',
+            filter: function(file) {
+                return true
+            }
+        }),
+        gulp.dest(PSpaths.dest+'/min'),
+        rename({ suffix: '.min' }),
+        uglify(),
+        gulp.dest(PSpaths.dest+'/min')
+
+    ]);
+    combined.on('error', handleError)
+});
+
 
 // 监听 photoSwipe_src 的SASS
 gulp.task('photoSwipe:watchScss', function() {

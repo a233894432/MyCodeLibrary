@@ -1,4 +1,4 @@
-(function (root, factory) {if (typeof define === 'function' && define.amd) {define(factory);} else if (typeof exports === 'object') {module.exports = factory();} else {root.PhotoSwipe = factory();}})(this, function () {'use strict';var PhotoSwipe = function(template, UiClass, items, options){/**
+/* author: Diogoxiang */(function (root, factory) {if (typeof define === 'function' && define.amd) {define(factory);} else if (typeof exports === 'object') {module.exports = factory();} else {root.PhotoSwipe = factory();}})(this, function () {'use strict';var PhotoSwipe = function(template, UiClass, items, options){/**
  *
  * Set of generic functions used by gallery.
  * 
@@ -274,7 +274,8 @@ if(framework.features.oldIE) {
 		}
 	};
 	
-}/* new js *///function(template, UiClass, items, options)
+}/* new js */ 
+//function(template, UiClass, items, options)
 
 var self = this;
 
@@ -1301,7 +1302,8 @@ var publicMethods = {
 
 
 };
-/* new js *//**
+/* new js */ 
+/**
  * Mouse/touch/pointer event handlers.
  * 
  * separated from @core.js for readability
@@ -2456,7 +2458,8 @@ _registerModule('Gestures', {
 
 	}
 });
-/* new js *//**
+/* new js */ 
+/**
  * show-hide-transition.js:
  *
  * Manages initial opening or closing transition.
@@ -2636,7 +2639,8 @@ var _showOrHideTimeout,
 		startAnimation();
 
 		
-	};/* new js *//**
+	};/* new js */ 
+/**
 *
 * Controller manages gallery items, their dimensions, and their content.
 * 
@@ -3128,7 +3132,8 @@ _registerModule('Controller', {
 		}
 
 	}
-});/* new js *//**
+});/* new js */ 
+/**
  * tap.js:
  *
  * Displatches tap and double-tap events.
@@ -3205,7 +3210,8 @@ _registerModule('Tap', {
 			}
 		}
 	}
-});/* new js *//**
+});/* new js */ 
+/**
  *
  * desktop-zoom.js:
  *
@@ -3375,7 +3381,8 @@ _registerModule('DesktopZoom', {
 
 	}
 });
-/* new js *//**
+/* new js */ 
+/**
  *
  * history.js:
  *

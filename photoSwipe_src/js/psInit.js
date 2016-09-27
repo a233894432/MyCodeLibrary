@@ -209,10 +209,10 @@ var initGallery = {
      * @param gallerySelector
      */
     init: function (gallerySelector) {
-        var galleryElements = document.querySelectorAll(gallerySelector)
+        var galleryElements = document.querySelectorAll(gallerySelector);
         //设置 data-pswp-uid
         for (var i = 0, l = galleryElements.length; i < l; i++) {
-            galleryElements[i].setAttribute('data-pswp-uid', i + 1)
+            galleryElements[i].setAttribute('data-pswp-uid', i + 1);
             galleryElements[i].onclick = initGallery.onThumbnailsClick
         }
         // Parse URL and open gallery if it contains #&pid=3&gid=1
@@ -228,18 +228,18 @@ var initGallery = {
      */
     photoswipeParseHash:function() {
         var hash = window.location.hash.substring(1),
-            params = {}
+            params = {};
 
         if (hash.length < 5) {
             return params
         }
 
-        var vars = hash.split('&')
+        var vars = hash.split('&');
         for (var i = 0; i < vars.length; i++) {
             if (!vars[i]) {
                 continue
             }
-            var pair = vars[i].split('=')
+            var pair = vars[i].split('=');
             if (pair.length < 2) {
                 continue
             }
@@ -267,17 +267,17 @@ var initGallery = {
             item;
 
         for (var i = 0; i < numNodes; i++) {
-            figureEl = thumbElements[i] // <figure> element
+            figureEl = thumbElements[i]; // <figure> element
 
             // include only element nodes
             if (figureEl.nodeType !== 1) {
                 continue
             }
 
-            linkEl = figureEl.children[0] // <a> element
+            linkEl = figureEl.children[0]; // <a> element
             //linkEl=$(figureEl).find('a');
 
-            size = linkEl.getAttribute('data-size').split('x') != undefined ? linkEl.getAttribute('data-size').split('x') :[100,100];
+            size = initGallery.getBig(figureEl).getAttribute('data-size') != undefined ? initGallery.getBig(figureEl).getAttribute('data-size').split('x') :[100,100];
 
             // create slide object
             item = {
@@ -298,7 +298,7 @@ var initGallery = {
                 item.msrc = initGallery.getBigSrc(linkEl);
             }
 
-            item.el = figureEl // save link to element for getThumbBoundsFn
+            item.el = figureEl; // save link to element for getThumbBoundsFn
             items.push(item)
         }
 
@@ -308,14 +308,12 @@ var initGallery = {
      * 打开PhotoSwipe
      */
     openPhotoSwipe:function(index, galleryElement, disableAnimation, fromURL){
-        var pswpElement = document.querySelectorAll('.pswp')[0], // 获取DOM模版
+        var pswpElement = document.querySelectorAll('.pswp')[0], // 获取ROOT DOM模版
             gallery,
             options,
             items;
 
-        items = initGallery.parseThumbnailElements(galleryElement)
-
-        console.log(items);
+        items = initGallery.parseThumbnailElements(galleryElement);
 
         // define options (if needed)
         options = {
@@ -333,11 +331,11 @@ var initGallery = {
                 console.log(thumbnail);
                 return {x: rect.left, y: rect.top + pageYScroll, w: rect.width}
             },
-            fullscreenEl:false,
-            shareEl:false,
+            fullscreenEl:false, // 关闭全屏
+            shareEl:false, // 关闭分享
             tapToClose: true // 点击关闭
 
-        }
+        };
 
         // PhotoSwipe opened from URL
         if (fromURL) {
@@ -455,6 +453,55 @@ var initGallery = {
      */
     getDes:function getDes(el){
         return el.getElementsByClassName('description')[0].innerHTML;
+    },
+
+    /**
+     * 只提交数据..无实际的DOM元素 可直接打开图片浏览
+     * @param index 序列
+     * @param items 图片的集合
+     *      items:
+                 [
+                 {
+                    msrc:'http://placehold.it/120x120',
+                     src: 'http://placehold.it/600x400',
+                     w: 600,
+                     h: 400,
+                     title:"我是图片001" // 这个是简介
+                 },
+                 {
+                    msrc:'http://placehold.it/120x120', //这个是缩放动的那个小图片的地址.
+                     src: 'http://placehold.it/1200x900',
+                     w: 1200,
+                     h: 900
+                 }
+                 ];
+     *
+     *
+     */
+    newPhotoSwipe:function(index,items){
+        var pswpElement = document.querySelectorAll('.pswp')[0], // 获取ROOT DOM模版
+            gallery,
+            options;
+
+        options = {
+
+            // define gallery index (for URL)
+            //galleryUID: galleryElement.getAttribute('data-pswp-uid'),  // 当前
+            fullscreenEl:false, // 关闭全屏
+            shareEl:false, // 关闭分享
+            tapToClose: true // 点击关闭
+        };
+
+        options.index = parseInt(index, 10);
+        // exit if index not found
+        if (isNaN(options.index)) {
+            return
+        }
+        options.showAnimationDuration = 0; //时间关闭动画
+
+        // Pass data to PhotoSwipe and initialize it
+        gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+        gallery.init()
     }
 
 

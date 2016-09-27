@@ -19,8 +19,6 @@
 
 	'use strict';
 
-
-
 var PhotoSwipeUI_Default =
  function(pswp, framework) {
 
