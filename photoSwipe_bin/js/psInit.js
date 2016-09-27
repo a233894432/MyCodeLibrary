@@ -331,6 +331,7 @@ var initGallery = {
                 console.log(thumbnail);
                 return {x: rect.left, y: rect.top + pageYScroll, w: rect.width}
             },
+            errorMsg:'<div class=\"pswp__error-msg\">图片加载失败</div>', // 默认图片加载失败的时候显示
             fullscreenEl:false, // 关闭全屏
             shareEl:false, // 关闭分享
             tapToClose: true // 点击关闭
@@ -484,7 +485,7 @@ var initGallery = {
             options;
 
         options = {
-
+            errorMsg:'<div class=\"pswp__error-msg\">图片加载失败</div>', // 默认图片加载失败的时候显示
             // define gallery index (for URL)
             //galleryUID: galleryElement.getAttribute('data-pswp-uid'),  // 当前
             fullscreenEl:false, // 关闭全屏
@@ -497,13 +498,12 @@ var initGallery = {
         if (isNaN(options.index)) {
             return
         }
-        options.showAnimationDuration = 0; //时间关闭动画
+        options.showAnimationDuration = 300; //关闭动画
 
         // Pass data to PhotoSwipe and initialize it
         gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
         gallery.init()
     }
-
 
 
 
