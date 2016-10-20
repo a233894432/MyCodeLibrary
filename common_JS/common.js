@@ -313,7 +313,6 @@
          * 
          */
         isNotEmpty: function(data) {
-
             data = data + "";
             if (data === null || data === undefined || data == "null" || data == "undefined" || data == "" || data.length == 0) {
                 return false;
