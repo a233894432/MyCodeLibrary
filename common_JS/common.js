@@ -224,13 +224,42 @@
         /**
          * 获取cookie中参数
          */
-        getQueryCookie: function getQueryCookie(name) {
+        getQueryCookie: function(name) {
             var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
             if (arr = document.cookie.match(reg))
                 return (arr[2]);
             else
                 return null;
         },
+        /**
+         * 获取location 中参数
+         * @param name 是想获取的参数
+         * @returns 成功则返回参数值,失败则返回  null
+         */
+        getQueryString: function(name) {
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            }
+            return null;
+        },
+        /**
+         * 获取已知 url 中参数 
+         * @param name 是想获取的参数
+         * @param url 已知url
+         * @returns 成功则返回参数值,失败则返回  null
+         * @description 这个还得再改造
+         */
+        getQstring: function(url, name) {
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+            var r = url.match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            }
+            return null;
+        },
+
         /**
          * 定位标签
          * @param el
