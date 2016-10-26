@@ -156,3 +156,28 @@
   display: block;
   //color: rgba(0,0,0,.5);
 }
+
+// 1px border-radius
+@mixin border-radius-1px($border-color: $color-border,$border-radius: $border-radius-base,$border-before-radius: $border-radius-lg){
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    position: relative;
+    border: 0;
+    &:before{
+      content:"";
+      width: 200%;
+      height: 200%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 1px solid $border-color;
+      -webkit-transform:scale(.5);
+      -webkit-transform-origin: 0 0;
+      padding: 1px;
+      -webkit-box-sizing: border-box;
+      border-radius: $border-before-radius;
+      pointer-events: none;
+    }
+  }
+}

@@ -32,7 +32,9 @@ $color-background-over: rgba(0, 0, 0, .05) !default;
 $color-background-back: #f3f3f3 !default;
 
 $color-border: #ddd !default;
-
+//border
+$border-radius-base:.5rem !default;
+$border-radius-lg:1rem !default;
 // `body` and `container`
 $color-text-body: $color-text !default;
 $color-background-body: $color-background-back !default;
