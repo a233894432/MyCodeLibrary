@@ -1,0 +1,33 @@
+//
+// <Project name>
+// =============================================================================
+.#{$ns}con {
+    background: $black;
+}
+
+.grid-test .row,
+.grid-test [class*="block-row-"] {
+    text-align: center;
+    background: #ebebeb;
+}
+
+.grid-test .row+.row,
+.grid-test .row .row {
+    padding-top: .5em;
+}
+
+.grid-test .row.equal-height {
+    padding-top: 0;
+}
+
+.grid-test [class*="block-row-"]>*,
+.grid-test [class*="col-"] {
+    line-height: 2em;
+    background-color: #3876a7;
+    color: #fff;
+}
+
+.grid-test [class*="col-"] [class*="col-"] {
+    background-color: #434343;
+    color: #fff;
+}

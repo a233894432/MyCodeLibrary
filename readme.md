@@ -1,37 +1,17 @@
 # [JS功能组件库](https://github.com/a233894432/MyCodeLibrary) 组件模块与常用代码段 JS
-## 整理现有的 功能组件库 ( 暂时主要用于适用于: 微信 ) Weui 组件库 ,目标解决以下问题
+## [issues list](https://github.com/a233894432/MyCodeLibrary/issues)
+## my_css_Framework ：Diogo.css – v0.2 
+    - A minimalist CSS framework.
+    - 一个极简的CSS框架
+    - Browser support covers IE9+ as well as all other modern browsers.
+    - 支持IE9以上 ,或其他  modern browsers.
+    - new ui-module , alert module
+    - 新加常用UI组件, 弹窗组件 js
+    - 需要jquery 2.0 的支持
+    
 
-    1. PhotoSwipe.js : 主要用于 图片浏览,主要功能 图片的放大的,图片的拖动
-    2. wxtime.js : 主要 微信的时间
-    3. 七牛图片上传的JS与对接 :现应用于 微信
-    4. Common_js : 主要是一些 常用的JS代码段 (不需要jquery)
-    5. 整合H5视频的对接 : 主要是优酷 腾讯
-    6. Dropload.js : 上拉.下拉刷新 
-    7. 定位组件 
-    8. 点击穿透问题
-    9. DIV拖拽功能
-    10. store.js : localStorage 解决方案
-    11. progress.js : 页面切换  
+## common_JS 
+常用JS代码库
 
-## 已完成的
-    1. Common_js主要是一些 常用的JS代码段 (可不需要jquery)   已完成
-    2. PhotoSwipe.js主要用于 图片浏览,主要功能 图片的放大的,图片的拖动demo,  已完成; 具体的引用示例还需要开发
-    3. Dropload.js上拉加载数据 | 下拉刷新 数据  已使用
-    4. GPS定位组件基于微信的GPS定位,城市的选择   已有DEMO
-    5. progress.js 页面跳转的动画效果,loading   已有DEMO
-    6. store.js  localStorage 解决方案   已在项目中使用
-    7. 问题: 点击穿透的问题暂时用的. touchend 解决 已使用
-
-
-## 未完成的
-    - 七牛图片上传的JS与对接主要用于,直接让用户上传图片到第三方七牛平台 未开始
-    - 整合H5视频的对接主要是用于在HTML5中插入,优酷,腾讯的视频     需整合\提取
-    - 问题:   DIV拖拽功能竖向拖拽,横向拖拽(有待预研) 需整合\提取
-    - wxtime.js主要用于: 格试化 微信的时间  需整合
-    - 简易富文本编辑器可做到 插入 (表情)( 评论页面需单独做)
-    - 图片的裁剪主要是 根据七牛 的一些参数做参考
-
-## 目标
-| 组件名称        | 主要功能           | 开发进度  |
-| ---------------|:-------------------:| --------:|
-| PhotoSwipe.js     | 主要用于 图片浏览,主要功能 <br>图片的放大的,图片的拖动 | 已经完成 |
+## Module_Library
+常用公共JS组件库-以及Demo库

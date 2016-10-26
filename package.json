@@ -10,7 +10,10 @@
     "keywords": [
         "es6",
         "go",
-        "sass"
+        "sass",
+        "css",
+        "mobile",
+        "design"
     ],
     "author": "diogoxiang",
     "license": "ISC",
@@ -29,6 +32,8 @@
         "eslint-config-standard": "^6.0.0",
         "eslint-plugin-promise": "^2.0.1",
         "eslint-plugin-standard": "^2.0.0",
+        "eslint-config-airbnb-base": "^5.0.3",
+        "eslint-plugin-import": "^1.14.0",
         "gulp": "^3.9.0",
         "gulp-autoprefixer": "^3.1.0",
         "gulp-babel": "^5.3.0",
@@ -51,6 +56,12 @@
         "gulp-uglify": "^1.5.1",
         "gulp-util": "^3.0.7",
         "gulp-watch-path": "^0.1.0",
+        "gulp-insert": "^0.5.0",
+        "gulp-postcss": "^6.1.1",
+        "gulp-sourcemaps": "^1.6.0",
+        "rimraf": "^2.5.4",
+        "run-sequence": "^1.2.2",
+        "autoprefixer": "^6.4.0",
         "mocha": "^2.3.3",
         "stream-combiner2": "^1.1.1",
         "webpack": "^1.12.2",

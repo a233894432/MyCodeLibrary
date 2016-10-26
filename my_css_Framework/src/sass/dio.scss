@@ -1,0 +1,37 @@
+@charset "UTF-8";
+//public base
+@import
+"public/variables",
+"public/mixin/mixin";
+
+
+
+// //base styles
+// @import
+// "base/normalize",
+// "base/base";
+
+// // Helpers
+// @import "base/helpers-layout";
+// @import "base/helpers-visibility";
+
+// //icon
+// @import "base/icon";
+// // Grid System
+// @import "base/grid";
+
+// CSS Components
+// @import
+// "base/alerts",
+// "base/list",
+// "base/modal",
+// "base/tablelist",
+// "base/tables",
+// "base/forms",
+// "base/media";
+
+//1px hack
+// @import "base/border";
+
+//custom this other projact different
+@import "customer/custom";
