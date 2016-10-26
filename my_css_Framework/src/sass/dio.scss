@@ -4,7 +4,14 @@
 "public/variables",
 "public/mixin/mixin";
 
-
+@import 
+"base/resets",
+"base/layout",
+"base/flexbox",
+"base/table",
+"base/form",
+"base/util",
+"base/btn";
 
 // //base styles
 // @import
@@ -15,8 +22,9 @@
 // @import "base/helpers-layout";
 // @import "base/helpers-visibility";
 
-// //icon
-// @import "base/icon";
+//icon
+@import "base/icon";
+
 // // Grid System
 // @import "base/grid";
 
