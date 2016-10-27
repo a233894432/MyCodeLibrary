@@ -75,5 +75,4 @@ $RECYCLE.BIN/
 *.lnk
 node_modules
 .idea/
-.vscode/
 .sass-cache/
