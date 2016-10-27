@@ -5,7 +5,7 @@
 </p>
 
 # Diogo.css – v0.2
-> 更新时间 20161027 [issues list](https://github.com/a233894432/MyCodeLibrary/issues)
+* 更新时间 20161027 [issues list](https://github.com/a233894432/MyCodeLibrary/issues)
 - A minimalist CSS framework.
 - 一个极简的CSS框架
 - Browser support covers IE9+ as well as all other modern browsers.

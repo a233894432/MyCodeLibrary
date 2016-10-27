@@ -146,7 +146,7 @@
         /**
          * fn.getCountDown  
          * @description: 倒计时的一段脚本。
-         * @param:deadline ->截止日期 符合日期格式，比如 '2014-04-23 18:55:49' 等有效日期。
+         * @param:deadline ->截止日期 符合日期格式，比如 '2016-11-23 18:55:49' 等有效日期。或是 "1477897440"
          * @return -> 截止的天数、小时、分钟、秒数组成的object对象。
          */
         getCountDown: function(deadline) {
@@ -160,11 +160,11 @@
                 return;
             }
 
-            var totalSecond = ~~(intervaltime / 1000), //得到秒数
+            var totalSecond = ~~(intervaltime / 1000), //得到总秒数
                 toDay = ~~(totalSecond / 86400), //得到天数
                 toHour = ~~((totalSecond - toDay * 86400) / 3600), //得到小时
                 tominute = ~~((totalSecond - toDay * 86400 - toHour * 3600) / 60), //得到分数
-                toSeconde = ~~(totalSecond - toDay * 86400 - toHour * 3600 - tominute * 60);
+                toSeconde = ~~(totalSecond - toDay * 86400 - toHour * 3600 - tominute * 60); //得到秒数
 
             /*装配obj*/
             activeDateObj.day = toDay;
@@ -361,6 +361,9 @@
 
         /**
          * 日期格式化  yyyy-MM-dd hh:mm:ss.S
+         * @description 日期格式化  yyyy-MM-dd hh:mm:ss.S
+         * @param data -> 如: new Date() 对像
+         * @param fmt -> 如: yyyy-MM-dd hh:mm:ss
          */
         doDateFormat: function(date, fmt) {
             var o = {
@@ -404,12 +407,14 @@
         },
         /**
          * 去除特殊字符
+         * @description 去除特殊字符
+         * @param str-> String
          */
-        regExpText: function(s) {
+        regExpText: function(str) {
             var pattern = new RegExp(/[^\u4e00-\u9fa5\uFF00-\uFFFFa-zA-Z0-9-,.!~"%@{}\s\[\]()<>`_=+*$￥?:;'，。；？～…、〔〕！@“”×]/igm)
             var rs = "";
             for (var i = 0; i < s.length; i++) {
-                rs = rs + s.substr(i, 1).replace(pattern, '');
+                rs = rs + str.substr(i, 1).replace(pattern, '');
             }
             return rs;
         },
