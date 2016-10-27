@@ -1,0 +1,35 @@
+VISUAL STUDIO CODE SETTINGS SYNC 
+
+Upload SUMMARY 
+
+-------------------- 
+GITHUB TOKEN: d84ac83bfc3a5c8968796442b9f91f8c37d924d5 
+GITHUB GIST: d841e9b3a474de6d02f8b0db7849c3ab 
+GITHUB GIST TYPE: Secret 
+ 
+-------------------- 
+  
+
+Files Upload. 
+ 
+extensions.json 
+ 
+
+EXTENSIONS ADDED : 
+ 
+beautify - Version :0.5.2 
+bootstrap-3-snippets - Version :0.0.7 
+code-settings-sync - Version :2.3.3 
+githistory - Version :0.1.0 
+Go - Version :0.6.47 
+html-css-class-completion - Version :1.0.3 
+html-snippets - Version :0.0.18 
+JavaScriptSnippets - Version :1.2.0 
+sass-helper - Version :0.0.2 
+sass-indented - Version :1.1.0 
+task-master - Version :0.1.32 
+theme-onedark - Version :0.3.1 
+vscode-base64 - Version :0.0.1 
+vscode-npm - Version :3.3.0 
+vscode-react-native - Version :0.2.1 
+vscode-scss - Version :0.4.0 
