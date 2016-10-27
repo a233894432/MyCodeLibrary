@@ -30,9 +30,16 @@ var handleError = function(err) {
 
 // photoSwipe_手机端图片浏览组件(左右划动,缩放)
 var PSpaths = {
-    js: './photoSwipe_src/js',
-    sass: './photoSwipe_src/sass/',
-    dest: './photoSwipe_bin/js/'
+    js: './Module_Library/photoSwipe_src/js',
+    sass: './Module_Library/photoSwipe_src/sass/',
+    dest: './Module_Library/photoSwipe_bin/js/'
+}
+
+var css_Framework={
+    js:'./my_css_Framework/src/sass/',
+    css:'./my_css_Framework/src/css/',
+    sass:'./my_css_Framework/src/sass/',
+    dist:'./my_css_Framework/dist/'
 }
 
 // 默认方法
@@ -132,3 +139,29 @@ gulp.task('photoSwipe:copyFile', function() {
 
 // photoSwipe:auto 自动
 gulp.task('photoSwipe:auto', ['photoSwipe:copyFile', 'photoSwipe:watchScss'])
+
+
+//监听 css_Framework 的SASS
+gulp.task('css_Framework:watchScss',function(){
+      var cssSrc = css_Framework.sass + '/*.scss',
+        cssSrca = css_Framework.css, // 源码也输出一份
+        cssdist =css_Framework.dist+ 'css/'
+    gulp.watch(css_Framework.sass + '**/*.scss', function(event) {
+        var paths = watchPath(event, css_Framework.sass, css_Framework.css)
+
+        gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
+        gutil.log('Dist ' + paths.distPath)
+
+        gulp.src(paths.srcPath)
+        return sass(cssSrc, { style: 'expanded' })
+            .pipe(gulp.dest(cssSrca))
+            .pipe(gulp.dest(cssdist))
+            .pipe(rename({ suffix: '.min' }))
+            .pipe(cssnano()) // 精简
+            .pipe(gulp.dest(cssSrca))
+            .pipe(gulp.dest(cssdist))
+            .on('error', function(err) {
+                console.error('Error!', err.message)
+            })
+    })
+})
