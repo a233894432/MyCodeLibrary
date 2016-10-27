@@ -145,6 +145,8 @@ $font-family:
   BlinkMacSystemFont,
   // Windows
   'Segoe UI',
+  // Chinese font for Android
+  'Source Han Sans SC', // 思源黑体 
   // Android
   'Roboto',
   // Linux
@@ -153,10 +155,10 @@ $font-family:
   'Cantarell', // GNOME
   // Firefox OS [R.I.P.]
   'Fira Sans',
-  // Older Android
+  // Older Android old Chinese font
   'Droid Sans',
   // Chinese font for OSX and iOS
-  'Hiragino Sans GB',
+  'Hiragino Sans GB', //
   // Chinese font for Windows
   'Microsoft Yahei', '微软雅黑',
   // Basic web fallback
