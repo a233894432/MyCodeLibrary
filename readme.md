@@ -8,10 +8,13 @@
     - new ui-module , alert module
     - 新加常用UI组件, 弹窗组件 js
     - 需要jquery 2.0 的支持
-    
 
 ## common_JS 
 常用JS代码库
 
 ## Module_Library
 常用公共JS组件库-以及Demo库
+
+
+## 更新记录
+> 2016年10月28日19:02:32 
