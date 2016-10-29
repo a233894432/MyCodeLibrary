@@ -35,11 +35,11 @@ var PSpaths = {
     dest: './Module_Library/photoSwipe_bin/js/'
 }
 
-var css_Framework={
-    js:'./my_css_Framework/src/sass/',
-    css:'./my_css_Framework/src/css/',
-    sass:'./my_css_Framework/src/sass/',
-    dist:'./my_css_Framework/dist/'
+var css_Framework = {
+    js: './my_css_Framework/src/sass/',
+    css: './my_css_Framework/src/css/',
+    sass: './my_css_Framework/src/sass/',
+    dist: './my_css_Framework/dist/'
 }
 
 // 默认方法
@@ -81,7 +81,7 @@ gulp.task('photoSwipe:buildJs', function() {
 // 合并Photo Swipe UI-JS模块
 gulp.task('photoSwipe:buildUIJs', function() {
     var combined = combiner.obj([
-        gulp.src([PSpaths.dest+ '/verdor.js', PSpaths.dest+ '/photoswipe-ui-default.js']),
+        gulp.src([PSpaths.dest + '/verdor.js', PSpaths.dest + '/photoswipe-ui-default.js']),
         concat('photoSwipe-model.js', { newLine: '\/* new js *\/ \n' }),
         headerFooter({
             header: '\/* author:diogoxiang *\/ \n',
@@ -90,10 +90,10 @@ gulp.task('photoSwipe:buildUIJs', function() {
                 return true
             }
         }),
-        gulp.dest(PSpaths.dest+'/min'),
+        gulp.dest(PSpaths.dest + '/min'),
         rename({ suffix: '.min' }),
         uglify(),
-        gulp.dest(PSpaths.dest+'/min')
+        gulp.dest(PSpaths.dest + '/min')
 
     ]);
     combined.on('error', handleError)
@@ -142,10 +142,10 @@ gulp.task('photoSwipe:auto', ['photoSwipe:copyFile', 'photoSwipe:watchScss'])
 
 
 //监听 css_Framework 的SASS
-gulp.task('css_Framework:watchScss',function(){
-      var cssSrc = css_Framework.sass + '/*.scss',
+gulp.task('css_Framework:watchScss', function() {
+    var cssSrc = css_Framework.sass + '/*.scss',
         cssSrca = css_Framework.css, // 源码也输出一份
-        cssdist =css_Framework.dist+ 'css/'
+        cssdist = css_Framework.dist + 'css/'
     gulp.watch(css_Framework.sass + '**/*.scss', function(event) {
         var paths = watchPath(event, css_Framework.sass, css_Framework.css)
 
@@ -158,7 +158,7 @@ gulp.task('css_Framework:watchScss',function(){
             .pipe(gulp.dest(cssdist))
             .pipe(rename({ suffix: '.min' }))
             .pipe(cssnano()) // 精简
-            .pipe(gulp.dest(cssSrca))
+            // .pipe(gulp.dest(cssSrca))
             .pipe(gulp.dest(cssdist))
             .on('error', function(err) {
                 console.error('Error!', err.message)
