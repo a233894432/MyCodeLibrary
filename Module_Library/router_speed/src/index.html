@@ -45,7 +45,7 @@
             console.groupEnd();
         })
 
-        .route('#/custom/**', function(req, next) {
+        router.route('#/custom/**', function(req, next) {
             console.group();
             console.log('Matched everything after /custom/');
             console.log(arguments);
