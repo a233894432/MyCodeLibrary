@@ -28,7 +28,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "chai": "^3.3.0",
-    "colors": "^1.0.3",
+    "colors": "^1.0.3", 
     "eslint": "^3.5.0",
     "eslint-config-airbnb-base": "^5.0.3",
     "eslint-config-standard": "^6.0.0",

@@ -7,14 +7,14 @@
     - 支持IE9以上 ,或其他  modern browsers.
     - new ui-module , alert module
     - 新加常用UI组件, 弹窗组件 js
-    - 需要jquery 2.0 的支持
+    - 需要jquery 2.0 的支持 (各类组件)
 
 ## common_JS 
 常用JS代码库
 
 ## Module_Library
 常用公共JS组件库-以及Demo库
-
-
+    - router_speed   //简易路由库
+    - photoSwipe_src //图片浏览器库
 ## 更新记录
-> 2016年10月28日19:02:32 
+> 2016年11月16日13:43:01  
