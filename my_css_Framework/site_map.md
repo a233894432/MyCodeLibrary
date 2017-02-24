@@ -1,5 +1,7 @@
 ## Dioui.css 目录结构 <br/>
-> 需要完成的工作内容 2016年10月31日10:55:02
+> 更新 2017年2月24日15:59:46
+
+// http://getmobicss.com/  document
 
 # Getting Started
 - Introduction
