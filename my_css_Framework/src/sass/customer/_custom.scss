@@ -2,9 +2,9 @@
 // <Project name>
 // =============================================================================
 // variables 
-$color-eee: #eef !default;
+$color-eee: #eee !default;
 // =============================================================================
 .#{$ns}con {
-    background: $color-eee;
-    width: 100%;
+    background: $white;
+    margin: 0 auto;
 }

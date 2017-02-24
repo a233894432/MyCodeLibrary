@@ -51,24 +51,7 @@
 - Customization
 - Reference
 
-# Angular
-- Boilerplate HTML
-- Appbar
-- Buttons
-- Container
-- Dividers
-- Dropdowns
-- Forms
-- Grid
-- Overlay
-- Panels
-- Tables  
-- Tabs       
-- Typography  
-- Semantic HTML
-- CSS Helpers       
-- Customization
-- Reference
+
 
 # WebComponents
 - Boilerplate HTML

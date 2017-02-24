@@ -7,7 +7,7 @@ const rename = require('gulp-rename');
 const rimraf = require('rimraf');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
-const cleanCSS = require('gulp-clean-css');
+const cleanCSS = require('gulp-cssnano');
 const runSequence = require('run-sequence');
 const insert = require('gulp-insert');
 const exec = require('child_process').exec;
@@ -55,6 +55,13 @@ gulp.task('build', [
     'build:compressed',
 ]);
 
+gulp.task('watch', () => {
+    gulp.watch([
+        `${SRC_DIR}/**/*`,
+    ], ['build']);
+
+});
+
 gulp.task('copy', [
     'clean:site_theme_mobi_css',
     'copy:site_theme_mobi_css',
@@ -73,7 +80,7 @@ gulp.task('clean:dist', () => {
 
 gulp.task('build:compressed', ['build:sourcemaps'], () => gulp.src(`${DIST_DIR}/dio.css`)
     .pipe(cleanCSS())
-    .pipe(insert.prepend(`/* dio.css v${pkg.version} ${pkg.homepage} */\n`))
+    .pipe(insert.prepend(`/* dio.css v${pkg.version} - ${pkg.homepage} */\n`))
     .pipe(rename('dio.min.css'))
     .pipe(gulp.dest(DIST_DIR)));
 
@@ -81,7 +88,7 @@ gulp.task('build:sourcemaps', () => gulp.src(`${SRC_DIR}/sass/dio.scss`)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss(postcssConfig))
-    .pipe(insert.prepend(`/* dio.css v${pkg.version} ${pkg.homepage} */\n`))
+    .pipe(insert.prepend(`/* dio.css v${pkg.version} - ${pkg.homepage} */\n`))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(DIST_DIR)));
 
