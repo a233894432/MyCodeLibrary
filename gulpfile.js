@@ -36,7 +36,7 @@ var PSpaths = {
 }
 
 var css_Framework = {
-    js: './my_css_Framework/src/sass/',
+    js: './my_css_Framework/src/js/',
     css: './my_css_Framework/src/css/',
     sass: './my_css_Framework/src/sass/',
     dist: './my_css_Framework/dist/'
