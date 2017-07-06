@@ -367,6 +367,7 @@
          */
         doDateFormat: function(date, fmt) {
             var o = {
+                "y+": this.getFullYear(),
                 "M+": date.getMonth() + 1, //月份
                 "d+": date.getDate(), //日
                 "h+": date.getHours(), //小时
